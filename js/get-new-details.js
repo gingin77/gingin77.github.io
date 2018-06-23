@@ -12,9 +12,9 @@ export async function getNewRepoDetails(urls, repos) {
 
 async function mapUrls(urls) {
   const details = await Promise.all(
-    urls.map(async url => {
+    urls.map(async url => d3.json(url).then(data => {
       url_for_all_repo_langs: url,
-      all_lang_bytes_for_repo: await d3.json(url)
+      all_lang_bytes_for_repo: data,
     })
   );
   
