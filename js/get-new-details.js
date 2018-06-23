@@ -11,16 +11,14 @@ export async function getNewRepoDetails(urls, repos) {
 }
 
 async function mapUrls(urls) {
-  let details = []
-  urls.forEach(url => {
-    d3.json(url).then(data => {
-      let repoInfo = {};
-      repoInfo.url_for_all_repo_langs = url;
-      repoInfo.all_lang_bytes_for_repo = data;
-      details.push(repoInfo);
-    });
-  });
-  return details
+  const details = await Promise.all(
+    urls.map(async url => {
+      url_for_all_repo_langs: url,
+      all_lang_bytes_for_repo: await d3.json(url)
+    })
+  );
+  
+  return details;
 }
 
 function combineNewAndOldDetails(general, specific) {
