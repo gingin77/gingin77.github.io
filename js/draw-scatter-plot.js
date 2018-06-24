@@ -1,23 +1,6 @@
-import { getGeneralRepoInfo } from "./compare-repo-info.js";
-import { getNewRepoDetails } from "./get-new-details.js";
+import { getDataForD3 } from "./get-data-for-d3.js";
 
-const filePath = "static_data/saved_repo_data_06022018.json";
-
-async function getDataForD3() {
-  try {
-    const {
-      unchangedRepos,
-      newAndUpdatedRepoBaseInfo,
-      urlsToFetch 
-    } = await getGeneralRepoInfo();
-  
-    const newRepoData = await getNewRepoDetails(urlsToFetch, newAndUpdatedRepoBaseInfo);
-    
-    return unchangedRepos.concat(newRepoData)
-  } catch(e) {
-    console.log(`I'm the message for getDataForD3: ${e}`)
-  }
-}
+const filePath = "assets/static-data/saved_repo_data_06022018.json";
 
 export async function drawScatterPlot() {
   evaluateIfSVG()
@@ -33,26 +16,25 @@ export async function drawScatterPlot() {
 
   try {
     let newRepoData = await getDataForD3();
-    console.log(newRepoData)
 
-    d3.json(filePath).then(function (staticData) {
-      let myData = []
+    d3.json(filePath).then(staticData => {
+      let dataToPlot = []
       evalDataSetForD3(staticData, newRepoData)
 
       function evalDataSetForD3(data, newRepoData) {
         if (newRepoData) {
-          myData = newRepoData;
-          console.log('myData = updated data from GitHub API')
+          dataToPlot = newRepoData;
+          console.log('dataToPlot = updated data from GitHub API')
         } else {
-          myData = data
-          console.log('myData = static data')
+          dataToPlot = data
+          console.log('dataToPlot = static data')
         }
       }
 
       let sortbyDate = d3.nest()
         .key(function (d) { return d.pushed_at })
         .sortKeys(d3.ascending)
-        .entries(myData)
+        .entries(dataToPlot)
 
       let minDate = new Date(sortbyDate[0].key),
         maxDate = new Date(sortbyDate[sortbyDate.length - 1].key),
@@ -124,7 +106,7 @@ export async function drawScatterPlot() {
         .style('opacity', 0)
 
       svg.selectAll('dot')
-        .data(myData)
+        .data(dataToPlot)
         .enter()
         .append('circle')
         .attr('r', 4.5)

@@ -1,10 +1,11 @@
-let viewportWidth = window.innerWidth
+let { innerWidth, innerHeight } = window
+
 let loader = document.getElementById('loader')
 let contents = document.getElementById('contents')
 
 document.onreadystatechange = function () {
   var state = document.readyState
-  if (viewportWidth > 500) {
+  if (innerWidth > 500) {
     adjustForNotSmallVP();
     if (state === 'interactive') {
       alignContactPhotoNonMob();
@@ -21,11 +22,10 @@ document.onreadystatechange = function () {
   }
 }
 
-window.addEventListener('resize', adjustIfNeeded)
+window.onresize = adjustIfNeeded();
 
 function adjustIfNeeded () {
-  viewportWidth = window.innerWidth
-  if (viewportWidth <= 500) {
+  if (innerWidth <= 500) {
     loader.remove();
     adjustForSmallVP();
   } else {
@@ -84,6 +84,7 @@ function modResMob () {
 
 function rmElsForMob () {
   let elsToRemove = document.getElementsByClassName('removeOnMobile')
+  console.log(elsToRemove)
   for (let i = elsToRemove.length - 1; i >= 0; i--) {
     elsToRemove[i].remove()
   }
@@ -98,23 +99,4 @@ function adjPhotoMob () {
   let imageHolder = document.getElementById('image_holder')
   imageHolder.classList.remove('image_holder')
   imageHolder.classList.add('image_holder_mob')
-}
-
-let sideBar = document.getElementById('side_bar')
-let main = document.getElementById('home')
-let hamburger = document.getElementById('hamburger')
-let footer = document.getElementById('footer')
-
-function menuOpen () {
-  sideBar.setAttribute('style', 'width:180px;')
-  main.style.marginLeft = '180px'
-  footer.style.marginLeft = '180px'
-  hamburger.style.visibility = 'hidden'
-}
-
-function menuClose () {
-  sideBar.setAttribute('style', 'width:0')
-  main.style.marginLeft = '0'
-  footer.style.marginLeft = '0'
-  hamburger.style.visibility = 'visible'
 }

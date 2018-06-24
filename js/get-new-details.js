@@ -1,7 +1,7 @@
 // send requests for language details for new and updated repos,
 // then reorganize fetched data
 
-export async function getNewRepoDetails(urls, repos) {
+export async function getDetailedRepoInfo(urls, repos) {
   try {
     let newDetailsFromGitHub         = await requestLanguageDetailsFromGitHub(urls);
     let generalRepoInfoandNewDetails = combine(repos, newDetailsFromGitHub);

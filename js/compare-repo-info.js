@@ -20,11 +20,11 @@ export async function getGeneralRepoInfo() {
     // select general data state from updated repos
     let updatedRepos = selectGeneralData(gitHubApiData, updatedRepoLanguageObjects);
 
-    let newAndUpdatedRepoBaseInfo = updatedRepos.concat(newRepos);
+    let newAndUpdatedGeneralRepoInfo = updatedRepos.concat(newRepos);
 
     return {
       unchangedRepos:            allUnchangedRepos,
-      newAndUpdatedRepoBaseInfo: newAndUpdatedRepoBaseInfo,
+      newAndUpdatedGeneralRepoInfo: newAndUpdatedGeneralRepoInfo,
       urlsToFetch:               urlsToFetch
     }
   } catch (e) {
@@ -35,8 +35,9 @@ export async function getGeneralRepoInfo() {
 async function getData() {
   try {
     const paths = [
+      // "assets/static-data/api-data-62210.json",
       "https://api.github.com/users/gingin77/repos?per_page=100&page=1",
-      "static_data/saved_repo_data_06022018.json"
+      "assets/static-data/data-to-plot-6232018.json"
     ];
 
     let resolved = await Promise.all(paths.map(path => d3.json(path)))

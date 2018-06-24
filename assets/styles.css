@@ -245,7 +245,7 @@ h2{
 
 section {
   transition: margin-left 500ms;
-  transition-delay: margin-left 100ms
+  transition-delay: margin-left 100ms;
 }
 
 .italic{
@@ -689,8 +689,7 @@ footer{
   }
 
   #song_gif {
-    flex: 2.6; */
-    /* padding: 10px 10px; */
+    flex: 2.6;
     border-radius: 6px;
     margin: 10px 5px 10px 10px;
     max-width: 400px;
