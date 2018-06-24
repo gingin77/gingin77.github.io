@@ -460,11 +460,15 @@ text {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.skills_graph_title{
+.skills_graph_title {
   font-size: 1.8em;
   font-weight: 400;
   text-align: center;
   margin-top: 1em;
+}
+
+.sp-mobile > .skills_graph_title {
+  font-size: 0.9em;
 }
 
 .graphic_title{
