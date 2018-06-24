@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ginnie Hench</title>
+    <meta name="description" content=" " />
+    <meta name="author" content=" " />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicons/manifest.json">
+    <link rel="mask-icon" href="assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+    </style>
+  </head>
+  <body>
+    <div class="topic p_600_max">
+      <p class="skills_graph_title">Programming Languages for GitHub Repos Plotted by Most Recent Commit Date</p>
+      <div class="div_svg_caption">
+        <p class="bold_header">Hover over each data point for language and project repository names.</p>
+      </div>
+      <div id="for_svg"></div>
+      <p class="caption c_above">The scatter plot above uses data pulled from GitHub's REST API and was constructed using the D3.js library (D3 = Data-Driven
+        Documents).
+        <a href="https://github.com/gingin77/gh_rest_api_fetch"> The code is available on GitHub.
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+      </p>
+      <p>
+        I've written a blog post series discussing how I went about designing and building the scatter plot above. The series starts
+        off with the following intro post:
+        <a href="https://ginnielearnstocode.wordpress.com/2017/12/03/building-a-scatter-plot-with-d3-js-using-programming-language-data-from-githubs-rest-api/">Building a scatter plot with d3.js using data from GitHub’s REST API</a>
+      </p>
+    </div>
+    <script type="application/javascript" src="js/vue_content.js"></script>
+    <script type="module">
+      import { drawScatterPlot } from './js/draw-scatter-plot.js';
+      drawScatterPlot();
+    </script>
+  </body>
+</html>
