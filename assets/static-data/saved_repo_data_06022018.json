@@ -913,46 +913,6 @@
   },
   {
     "language": "Ruby",
-    "count": 71882,
-    "repo_name": "devcamp-portfolio",
-    "pushed_at": "2017-12-21T03:38:36Z",
-    "primary_repo_lang": "Ruby",
-    "url_for_all_repo_langs": "https://api.github.com/repos/gingin77/devcamp-portfolio/languages"
-  },
-  {
-    "language": "HTML",
-    "count": 47906,
-    "repo_name": "devcamp-portfolio",
-    "pushed_at": "2017-12-21T03:38:36Z",
-    "primary_repo_lang": "Ruby",
-    "url_for_all_repo_langs": "https://api.github.com/repos/gingin77/devcamp-portfolio/languages"
-  },
-  {
-    "language": "JavaScript",
-    "count": 36837,
-    "repo_name": "devcamp-portfolio",
-    "pushed_at": "2017-12-21T03:38:36Z",
-    "primary_repo_lang": "Ruby",
-    "url_for_all_repo_langs": "https://api.github.com/repos/gingin77/devcamp-portfolio/languages"
-  },
-  {
-    "language": "CSS",
-    "count": 8783,
-    "repo_name": "devcamp-portfolio",
-    "pushed_at": "2017-12-21T03:38:36Z",
-    "primary_repo_lang": "Ruby",
-    "url_for_all_repo_langs": "https://api.github.com/repos/gingin77/devcamp-portfolio/languages"
-  },
-  {
-    "language": "CoffeeScript",
-    "count": 2446,
-    "repo_name": "devcamp-portfolio",
-    "pushed_at": "2017-12-21T03:38:36Z",
-    "primary_repo_lang": "Ruby",
-    "url_for_all_repo_langs": "https://api.github.com/repos/gingin77/devcamp-portfolio/languages"
-  },
-  {
-    "language": "Ruby",
     "count": 43540,
     "repo_name": "Devise_test_2",
     "pushed_at": "2017-12-19T03:57:11Z",
