@@ -10,8 +10,9 @@ export async function getDataForD3() {
     } = await getGeneralRepoInfo();
 
     const newRepoData = await getDetailedRepoInfo(urlsToFetch, newAndUpdatedGeneralRepoInfo);
+    const allRepoData = unchangedRepos.concat(newRepoData);
 
-    return unchangedRepos.concat(newRepoData)
+    return { allRepoData: allRepoData }
   } catch (e) {
     console.log(`I'm the message for getDataForD3: ${e}`)
   }
