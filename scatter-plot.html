@@ -26,10 +26,19 @@
       @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
     </style>
   </head>
-  <body>
-    <div class="topic p_600_max sp-mobile">
-      <p class="skills_graph_title">Programming Languages for GitHub Repos Plotted by Most Recent Commit Date</p>
-      <div id="for_svg"></div>
+  <body id="sp-body">
+    <div class="sp-mobile-wrapper">
+      <div id="sp-mobile-heder-wrapper">
+        <div id="back-button-sp">
+          <a href='index.html'>
+            <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div id="sp-mobile-p">
+          <p class="skills_graph_title">Programming Languages for GitHub Repos Plotted by Most Recent Commit Date</p>
+        </div>
+      </div>
+      <div id="for_svg" class="svg-mobile"></div>
     </div>
     <script type="module">
       import { drawScatterPlot } from './js/draw-scatter-plot.js';

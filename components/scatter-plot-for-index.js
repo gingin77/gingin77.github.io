@@ -4,8 +4,8 @@ let scatterPlotContent = new Vue({
     if (window.innerWidth < 500) {
       return {
         scatterPlotContent: `
-          <div class="topic p_600_max">
-            <a href="scatter-plot.html">Click here to view a programming languages scatter plot built using D3.js with data pulled from the GitHub API</a>
+          <div class="topic p_600_max sp-mobile-link-wrapper">
+            <a href="scatter-plot.html">Click here to view a D3.js scatter plot displaying data pulled from the GitHub API, which represents programming languages used in various projects</a>
           </div>
         ` 
       }

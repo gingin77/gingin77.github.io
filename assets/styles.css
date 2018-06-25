@@ -460,6 +460,34 @@ text {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+.sp-mobile-wrapper {
+  margin: 0.6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
+  height: 90vh;
+}
+
+
+#sp-mobile-heder-wrapper {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  margin-top: 20px;
+}
+
+#sp-body {
+  overflow-y: hidden;
+}
+
+.sp-mobile-link-wrapper {
+  color:#060026;;
+  font-weight: 400;
+  text-align: center;
+}
+
 .skills_graph_title {
   font-size: 1.8em;
   font-weight: 400;
@@ -467,8 +495,17 @@ text {
   margin-top: 1em;
 }
 
-.sp-mobile > .skills_graph_title {
-  font-size: 0.9em;
+#back-button-sp {
+  font-size: 20px;
+  margin: 10px 12px 10px 0;
+}
+
+#sp-mobile-p > .skills_graph_title {
+  font-size: 0.95em;
+}
+
+.svg-mobile > svg {
+  padding-top: 2%;
 }
 
 .graphic_title{
