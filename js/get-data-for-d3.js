@@ -1,7 +1,7 @@
-import { getGeneralRepoInfo }  from "./compare-repo-info.js";
-import { getDetailedRepoInfo } from "./get-new-details.js";
+import { getGeneralRepoInfo }  from "./get-general-repo-info.js";
+import { getDetailedRepoInfo } from "./get-detailed-repo-info.js";
 
-export async function getDataForD3() {
+export async function getDataSetForD3() {
   try {
     const {
       unchangedRepos,
@@ -12,8 +12,8 @@ export async function getDataForD3() {
     const newRepoData = await getDetailedRepoInfo(urlsToFetch, newAndUpdatedGeneralRepoInfo);
     const allRepoData = unchangedRepos.concat(newRepoData);
 
-    return { allRepoData: allRepoData }
+    return allRepoData;
   } catch (e) {
-    console.log(`I'm the message for getDataForD3: ${e}`)
+    console.log(`I'm the message for getDataSetForD3: ${e}`)
   }
 }

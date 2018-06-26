@@ -358,13 +358,14 @@
     </div>
     <script type="application/javascript" src="components/header.js"></script>
     <script type="application/javascript" src="components/nav.js"></script>
-    <script type="application/javascript" src="components/nav.js"></script>
+    <script type="application/javascript" src="components/footer.js"></script>
     <script type="application/javascript" src="components/scatter-plot-for-index.js"></script>
     <script type="application/javascript" src="js/app.js"></script>
     <script type="application/javascript" src="js/sidebar-menu.js"></script>
     <script type="module">
-      import { drawScatterPlot } from './js/draw-scatter-plot.js';
+      import { drawScatterPlot, scopeByLanguageSelection } from './js/draw-scatter-plot.js';
       drawScatterPlot();
+      document.querySelector('#language-selector').addEventListener('change', scopeByLanguageSelection)
     </script>
   </body>
 </html>

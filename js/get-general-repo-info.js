@@ -23,9 +23,9 @@ export async function getGeneralRepoInfo() {
     let newAndUpdatedGeneralRepoInfo = updatedRepos.concat(newRepos);
 
     return {
-      unchangedRepos:            allUnchangedRepos,
+      unchangedRepos:               allUnchangedRepos,
       newAndUpdatedGeneralRepoInfo: newAndUpdatedGeneralRepoInfo,
-      urlsToFetch:               urlsToFetch
+      urlsToFetch:                  urlsToFetch
     }
   } catch (e) {
     console.log(`I'm the message for getGeneralRepoInfo: ${e}`);

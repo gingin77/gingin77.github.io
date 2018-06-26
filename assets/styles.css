@@ -448,7 +448,7 @@ section {
 
 /*  Styles related to svg    */
 svg {
-  padding: 20px 0 5px;
+  padding: 2% 0 1%;
 }
 
 rect {
@@ -486,6 +486,32 @@ text {
   color:#060026;;
   font-weight: 400;
   text-align: center;
+}
+
+#sp-menu-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 600px;
+  font-size: 12px;
+}
+
+#sp-menu-paragraph-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sp-menu-wrapper > p {
+  flex-shrink: 5;
+  margin-right: 10px;
+}
+
+#language-selector {
+  margin-top: 1%;
+  height: 40%;
+  max-width: 16%;
+  min-width: 90px;
 }
 
 .skills_graph_title {
@@ -545,7 +571,7 @@ h3 {
   color: #457DB7;
   width: 480px;
   display: inline-block;
-  margin: 40px 0 4px 0;
+  /* margin: 40px 0 4px 0; */
   padding: 0 40px 0 80px;
   text-align: center;
 }
