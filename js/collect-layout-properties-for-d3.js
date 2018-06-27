@@ -1,4 +1,4 @@
-export function getLayoutInfoForD3 () {
+export function collectLayoutPropertiesForD3 () {
   let { frameWidth, frameHeight } = getFrameDimensions();
   let xTickFrequency = getXTickFrequency(frameWidth);
 

@@ -1,34 +1,36 @@
-import { getDataSetForD3 }    from "./get-data-for-d3.js";
-import { getLayoutInfoForD3 } from "./collect-scatter-plot-layout-info.js";
+import { combineStaticDataAndApiUpdates } from "./get-data-for-d3.js";
+import { collectLayoutPropertiesForD3 }   from "./collect-layout-properties-for-d3.js";
 
 const filePath = "assets/static-data/saved_repo_data_06022018.json";
 
 function removeAnyExistingSVG() {
   let divForSvg = document.getElementById('for_svg')
+
   if (document.body.contains(divForSvg) && divForSvg.hasChildNodes()) {
     divForSvg.innerHTML = "";
   }
 }
 
-async function selectDataSource() {
-  let staticData = await d3.json(filePath).then(d => { return d })
-  let { allRepoData } = await getDataSetForD3();
+async function selectSourceData() {
+  let apiUpdatesToStaticData = await combineStaticDataAndApiUpdates();
+  let staticData             = await d3.json(filePath).then(d => { return d })
 
-  if (allRepoData) {
-    return allRepoData;
+  if (apiUpdatesToStaticData) {
+    console.log("Data source: apiUpdatesToStaticData")
+    return apiUpdatesToStaticData;
   } else {
+    console.log("Data source: staticData stored in app");
     return staticData;
   }
 }
 
 function scopeDataByPrimaryRepoLanguage(dataToPlot, language) {
   console.log(language);
+
   if (language == "all") {
     return dataToPlot
   } else {
-    return dataToPlot.filter(obj => {
-      return obj.primary_repo_lang == language;
-    });
+    return dataToPlot.filter(obj => obj.primary_language == language);
   }
 }
 
@@ -44,13 +46,13 @@ export async function drawScatterPlot(dataToPlot = null) {
 
   try {
     if (dataToPlot === null) {
-      dataToPlot = await selectDataSource();
+      dataToPlot = await selectSourceData();
       window.myData = dataToPlot;
     } else {
       dataToPlot = dataToPlot
     }
 
-    let { frameWidth, frameHeight, xTickFrequency } = getLayoutInfoForD3();
+    let { frameWidth, frameHeight, xTickFrequency } = collectLayoutPropertiesForD3();
       
     let sortbyDate = d3
       .nest()
@@ -138,7 +140,7 @@ export async function drawScatterPlot(dataToPlot = null) {
         tooltip.transition()
           .duration(200)
           .style('opacity', 1)
-        tooltip.html(d.language + '<br/>' + d.repo_name)
+        tooltip.html(d.language + '<br/>' + d.name)
           .style('left', (d3.event.pageX + 4) + 'px')
           .style('top', (d3.event.pageY - 12) + 'px')
       })
