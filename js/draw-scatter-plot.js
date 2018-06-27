@@ -181,7 +181,7 @@ export async function drawScatterPlot(dataToPlot = null) {
       .style('text-anchor', 'start')
       .text(d => { return d })
   }
-  catch (ex) {
-    console.log(`I'm the error message for drawScatterPlot: ${ex.message}`);
+  catch (e) {
+    console.log(e);
   }
 }

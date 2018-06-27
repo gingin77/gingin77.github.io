@@ -15,6 +15,6 @@ export async function combineStaticDataAndApiUpdates() {
 
     return allRepoData;
   } catch (e) {
-    console.log(`I'm the message for combineStaticDataAndApiUpdates: ${e}`)
+    console.log(e)
   }
 }

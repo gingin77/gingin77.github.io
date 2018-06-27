@@ -13,7 +13,7 @@ export async function getGeneralRepoInfo() {
       urlsForChangedRepos:               urlsForChangedRepos
     }
   } catch (e) {
-    console.log(`I'm the message for getGeneralRepoInfo: ${e}`);
+    console.log(e);
   }
 }
 
@@ -34,7 +34,7 @@ async function getData() {
 
     return resolved
   } catch (e) {
-    console.log(`I'm the message for getData: ${e}`);
+    console.log(e);
   }
 }
 
