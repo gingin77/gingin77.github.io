@@ -1,13 +1,10 @@
 export async function getGeneralRepoInfo() {
   try {
-    let { apiData, oldStaticData } = await getData();
-    let gitHubApiData              = mapGitHubData(apiData);
-
-    // sort inputs to identify what new requests need to happen and what data needs to be preserved
-    let objsForUnchangedRepos             = findUnchangedRepos(gitHubApiData, oldStaticData);
+    let { apiData, staticData }           = await getData();
+    let gitHubApiData                     = mapGitHubData(apiData);
+    let objsForUnchangedRepos             = findUnchangedRepos(gitHubApiData, staticData);
     let objsForChangedReposMissingDetails = findNewAndUpdatedRepos(gitHubApiData, objsForUnchangedRepos);
     
-    // identify repo urls to send fetch requests to for retrieving repo language details
     let urlsForChangedRepos = getUrls(objsForChangedReposMissingDetails);
 
     return {
@@ -28,10 +25,10 @@ async function getData() {
     ]
 
     let resolved = await Promise.all(paths.map(path => d3.json(path)))
-      .then(([apiData, oldStaticData]) => {
+      .then(([apiData, staticData]) => {
         return {
-          apiData:       apiData,
-          oldStaticData: oldStaticData
+          apiData:    apiData,
+          staticData: staticData
         }
       });
 
@@ -53,22 +50,22 @@ function mapGitHubData(apiData) {
   })
 }
 
-function findUnchangedRepos(gitHubApiData, oldStaticData) {
+function findUnchangedRepos(gitHubApiData, staticData) {
   let datesFromGitHubApiObjects = gitHubApiData.map(obj => obj.pushed_at);
 
-  return oldStaticData.filter(oldObject => {
-    return datesFromGitHubApiObjects.includes(oldObject.pushed_at);
+  return staticData.filter(object => {
+    return datesFromGitHubApiObjects.includes(object.pushed_at);
   })
 }
 
 function findNewAndUpdatedRepos(gitHubApiData, objsForUnchangedRepos) {
   let namesOfUnchangedRepos = new Set(objsForUnchangedRepos.map(repo => repo.name));
 
-  return gitHubApiData.filter(saved => {
-    return !namesOfUnchangedRepos.has(saved.name)
+  return gitHubApiData.filter(object => {
+    return !namesOfUnchangedRepos.has(object.name)
   });
 }
 
 function getUrls(repos) {
-  return repos.map(obj => obj.url_for_language_details);
+  return repos.map(object => object.url_for_language_details);
 }

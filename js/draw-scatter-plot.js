@@ -48,11 +48,9 @@ export async function drawScatterPlot(dataToPlot = null) {
     if (dataToPlot === null) {
       dataToPlot = await selectSourceData();
       window.myData = dataToPlot;
-    } else {
-      dataToPlot = dataToPlot
     }
 
-    let { frameWidth, frameHeight, xTickFrequency } = collectLayoutPropertiesForD3();
+    let { frameWidth, frameHeight, xTickFrequency, dotRadius } = collectLayoutPropertiesForD3();
       
     let sortbyDate = d3
       .nest()
@@ -128,27 +126,33 @@ export async function drawScatterPlot(dataToPlot = null) {
       .attr('class', 'tooltip')
       .style('opacity', 0)
 
-    svg.selectAll('dot')
+    svg
+      .selectAll("dot")
       .data(dataToPlot)
       .enter()
-      .append('circle')
-      .attr('r', 4.5)
-      .attr('cx', xValue)
-      .attr('cy', yValue)
-      .style('fill', d => { return colorScale(colorValue(d)) })
-      .on('mouseover', d => {
-        tooltip.transition()
-          .duration(200)
-          .style('opacity', 1)
-        tooltip.html(d.language + '<br/>' + d.name)
-          .style('left', (d3.event.pageX + 4) + 'px')
-          .style('top', (d3.event.pageY - 12) + 'px')
+      .append("circle")
+      .attr("r", dotRadius)
+      .attr("cx", xValue)
+      .attr("cy", yValue)
+      .style("fill", d => {
+        return colorScale(colorValue(d));
       })
-      .on('mouseout', () => {
-        tooltip.transition()
+      .on("mouseover", d => {
+        tooltip
+          .transition()
           .duration(200)
-          .style('opacity', 0)
+          .style("opacity", 1);
+        tooltip
+          .html(d.language + "<br/>" + d.name)
+          .style("left", d3.event.pageX + 4 + "px")
+          .style("top", d3.event.pageY - 12 + "px");
       })
+      .on("mouseout", () => {
+        tooltip
+          .transition()
+          .duration(200)
+          .style("opacity", 0);
+      });
 
     let legendColors = d3.scaleOrdinal()
       .domain(['JS', 'Ruby', 'CSS', 'HTML', 'Misc'])

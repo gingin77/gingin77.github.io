@@ -447,9 +447,9 @@ section {
 }
 
 /*  Styles related to svg    */
-svg {
+/* svg {
   padding: 2% 0 1%;
-}
+} */
 
 rect {
   fill: #060026;
@@ -530,9 +530,9 @@ text {
   font-size: 0.95em;
 }
 
-.svg-mobile > svg {
+/* .svg-mobile > svg {
   padding-top: 2%;
-}
+} */
 
 .graphic_title{
   text-align: center;

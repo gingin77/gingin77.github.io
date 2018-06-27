@@ -1,26 +1,30 @@
 export function collectLayoutPropertiesForD3 () {
-  let { frameWidth, frameHeight } = getFrameDimensions();
+  let { innerWidth, innerHeight } = window
+  let { frameWidth, frameHeight } = getFrameDimensions(innerWidth, innerHeight);
+  
   let xTickFrequency = getXTickFrequency(frameWidth);
+  let frameArea      = (frameWidth * frameHeight) / 1000;
+  let dotRadius      = getDotRadius(frameArea);
 
   return {
-    frameWidth: frameWidth,
-    frameHeight: frameHeight,
-    xTickFrequency: xTickFrequency
+    frameWidth:     frameWidth,
+    frameHeight:    frameHeight,
+    xTickFrequency: xTickFrequency,
+    dotRadius:      dotRadius
   }
 }
 
-function getFrameDimensions() {
-  let { innerWidth, innerHeight } = window
+function getFrameDimensions(innerWidth, innerHeight) {
   let frameHeight, frameWidth;
 
-  if (innerWidth < 600){
+  if (innerWidth < 600) {
     frameWidth = innerWidth;
   } else {
     frameWidth = 600;
   }
 
-  if (innerHeight < 360) {
-    frameHeight = innerHeight * 0.8;
+  if (innerHeight < 420) {
+    frameHeight = innerHeight * 0.7;
   } else {
     frameHeight = 340;
   }
@@ -35,5 +39,15 @@ function getXTickFrequency(frameWidth) {
     return 8;
   } else {
     return 4;
+  }
+}
+
+function getDotRadius(frameArea) {
+  if (frameArea < 160) {
+    return 3.2
+  } else if (frameArea < 200) {
+    return 3.8;
+  } else {
+    return 4.5;
   }
 }
