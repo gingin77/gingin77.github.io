@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script type="text/javascript" src="js/date.js"></script>
+    <script type="text/javascript" src="js/app/date.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/styles.css">
@@ -51,7 +51,7 @@
       </div>
     </div>
     <script type="module">
-      import { drawScatterPlot, scopeByLanguageSelection } from './js/draw-scatter-plot.js';
+      import { drawScatterPlot, scopeByLanguageSelection } from './js/scatter-plot/draw-scatter-plot.js';
       drawScatterPlot();
       document.querySelector('#language-selector').addEventListener('change', scopeByLanguageSelection)
     </script>
