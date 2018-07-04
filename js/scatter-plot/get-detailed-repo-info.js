@@ -1,13 +1,10 @@
-// send requests for language details for new and updated repos,
-// then reorganize fetched data and combine it with each repos general data 
-
 export async function getDetailedRepoInfo(urls, objsWithRepoGeneralInfo) {
   try {
     let languageDetailsFromGitHub  = await requestLanguageDetailsFromGitHub(urls);
     let generalAndDetailedRepoInfo = combine(objsWithRepoGeneralInfo, languageDetailsFromGitHub);
     let arrayOfRepoObjects         = getTransformedCombinationObject(generalAndDetailedRepoInfo);
     let arrayOfLanguageObjects     = makeOneObjectForEveryRepoLanguage(arrayOfRepoObjects);
-    
+ 
     return arrayOfLanguageObjects;
   } catch (e) {
     console.log(e);
