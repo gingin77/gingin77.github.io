@@ -24,14 +24,14 @@ function scopeDataByPrimaryRepoLanguage(dataToPlot, language) {
 export function scopeByLanguageSelection() {
   let language = this.value;
   let dataToPlot = scopeDataByPrimaryRepoLanguage(window.myData, language);
-
+  console.log(dataToPlot);
   drawScatterPlot(dataToPlot);
 }
 
 async function selectSourceData() {
   let apiUpdatesToStaticData = await combineStaticDataAndApiUpdates();
   let staticData             = await d3.json(filePath).then(d => { return d })
-
+  console.log(apiUpdatesToStaticData);
   if (apiUpdatesToStaticData) {
     console.log("Data source: apiUpdatesToStaticData")
     return apiUpdatesToStaticData;
@@ -83,20 +83,31 @@ export async function drawScatterPlot(dataToPlot = null) {
       yValue   = (d) => { return yScale(d.count) },
       yAxis    = d3.axisLeft(yScale).tickFormat(d3.format('0.2s'))
 
-    let blue     = '#457DB7',
+    let ltblue   = '#457DB7',
       rubyred    = '#991B67',
-      purple     = '#A99CCD',
       peach      = '#E6AC93',
-      grey       = '#8F8F90'
+      grey       = '#8F8F90',
+      pyyellow   = '#FDD659',
+      phppurple  = '#757EB1',
+      rosepink   = '#cd97b7'
+
+    let allLanguages = ['JavaScript', 'Ruby', 'PHP', 'Python', 'CSS', 'HTML', 'CoffeeScript', 'Shell', 'Null'];
+    let legendLanguageList = allLanguages.filter(col => !['CoffeeScript', 'Shell', 'Null'].includes(col))
+    legendLanguageList.push('Misc');
+    
+    let allColors = [ltblue, rubyred, phppurple, pyyellow, peach, rosepink, grey, grey, grey];
+    let legendColorList = Array.from(new Set(allColors));
+    console.log(allColors)
+    console.log(legendColorList)
 
     let colorValue = (d => { return d.language }),
         colorScale = d3.scaleOrdinal()
-          .domain(['JavaScript', 'Ruby', 'CSS', 'HTML', 'CoffeeScript', 'Shell', 'Null'])
-          .range([blue, rubyred, purple, peach, grey, grey, grey])
+          .domain(allLanguages)
+          .range(allColors)
 
     let legendColors = d3.scaleOrdinal()
-      .domain(['JS', 'Ruby', 'CSS', 'HTML', 'Misc'])
-      .range([blue, rubyred, purple, peach, grey]);
+      .domain(legendLanguageList)
+      .range(legendColorList);
 
     let tooltip = d3
       .select("body")
