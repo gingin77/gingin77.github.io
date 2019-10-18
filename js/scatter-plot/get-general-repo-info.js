@@ -21,7 +21,7 @@ async function getData() {
   try {
     const paths = [
       "https://api.github.com/users/gingin77/repos?per_page=100&page=1",
-      "assets/static-data/saved_repo_data_06022018.json"
+      "assets/static-data/saved_repo_data_10172018.json"
     ]
 
     let resolved = await Promise.all(paths.map(path => d3.json(path)))

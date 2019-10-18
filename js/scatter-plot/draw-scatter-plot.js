@@ -1,7 +1,7 @@
 import { combineStaticDataAndApiUpdates } from "./get-data-for-d3.js";
 import { collectLayoutPropertiesForD3 }   from "./collect-layout-properties-for-d3.js";
 
-const filePath = "assets/static-data/saved_repo_data_06022018.json";
+const filePath = "assets/static-data/saved_repo_data_10172018.json";
 
 function removeAnyExistingSVG() {
   let divForSvg = document.getElementById('for_svg')
