@@ -1,0 +1,22 @@
+{
+  "name": "portfolio_site",
+  "version": "1.0.0",
+  "description": "This project holds all of the essential front-end code for my portfolio site and hosts an up-to-date version of the scatterplot project I designed using programming language data from GitHub's REST API to populate a scatterplot constructed using d3.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gingin77/gingin77.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gingin77/gingin77.github.io/issues"
+  },
+  "homepage": "https://github.com/gingin77/gingin77.github.io#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
