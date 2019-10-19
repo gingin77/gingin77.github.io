@@ -12,8 +12,6 @@ function removeAnyExistingSVG() {
 }
 
 function scopeDataByPrimaryRepoLanguage(dataToPlot, language) {
-  console.log(language);
-
   if (language == "all") {
     return dataToPlot;
   } else {
@@ -24,7 +22,7 @@ function scopeDataByPrimaryRepoLanguage(dataToPlot, language) {
 export function scopeByLanguageSelection() {
   let language = this.value;
   let dataToPlot = scopeDataByPrimaryRepoLanguage(window.myData, language);
-  console.log(dataToPlot);
+
   drawScatterPlot(dataToPlot);
 }
 
@@ -39,6 +37,49 @@ async function selectSourceData() {
     console.log("Data source: staticData stored in app");
     return staticData;
   }
+}
+
+function languagesToColors() {
+  const ltblue = '#457DB7',
+    rubyred = '#991B67',
+    peach = '#E6AC93',
+    grey = '#8F8F90',
+    pyyellow = '#FDD659',
+    phppurple = '#757EB1',
+    rosepink = '#cd97b7'
+
+  return {
+    JavaScript: ltblue,
+    Ruby: rubyred,
+    PHP: phppurple,
+    Python: pyyellow,
+    CSS: peach,
+    HTML: rosepink,
+    CoffeeScript: grey,
+    Shell: grey,
+    Null: grey
+  }
+}
+
+function allLanguages() {
+  return Object.keys(languagesToColors());
+}
+
+function allLanguageColors() {
+  return Object.values(languagesToColors());
+}
+
+export function dropDownLanguageList() {
+  let legend_language_list = allLanguages().filter(lang => !['CoffeeScript', 'Shell', 'Null'].includes(lang));
+
+  return legend_language_list;
+}
+
+function legendLanguageList() {
+  let legend_language_list = dropDownLanguageList()
+  legend_language_list.push('Misc');
+  
+  return legend_language_list;
 }
 
 export async function drawScatterPlot(dataToPlot = null) {
@@ -83,30 +124,19 @@ export async function drawScatterPlot(dataToPlot = null) {
       yValue   = (d) => { return yScale(d.count) },
       yAxis    = d3.axisLeft(yScale).tickFormat(d3.format('0.2s'))
 
-    let ltblue   = '#457DB7',
-      rubyred    = '#991B67',
-      peach      = '#E6AC93',
-      grey       = '#8F8F90',
-      pyyellow   = '#FDD659',
-      phppurple  = '#757EB1',
-      rosepink   = '#cd97b7'
-
-    let allLanguages = ['JavaScript', 'Ruby', 'PHP', 'Python', 'CSS', 'HTML', 'CoffeeScript', 'Shell', 'Null'];
-    let legendLanguageList = allLanguages.filter(col => !['CoffeeScript', 'Shell', 'Null'].includes(col))
-    legendLanguageList.push('Misc');
+    let all_languages = allLanguages();
+    let legend_language_list = legendLanguageList();
     
-    let allColors = [ltblue, rubyred, phppurple, pyyellow, peach, rosepink, grey, grey, grey];
+    let allColors = allLanguageColors();
     let legendColorList = Array.from(new Set(allColors));
-    console.log(allColors)
-    console.log(legendColorList)
 
     let colorValue = (d => { return d.language }),
         colorScale = d3.scaleOrdinal()
-          .domain(allLanguages)
+          .domain(all_languages)
           .range(allColors)
 
     let legendColors = d3.scaleOrdinal()
-      .domain(legendLanguageList)
+      .domain(legend_language_list)
       .range(legendColorList);
 
     let tooltip = d3
