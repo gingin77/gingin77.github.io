@@ -1216,30 +1216,6 @@
     "url_for_language_details": "https://api.github.com/repos/gingin77/dragon_app/languages"
   },
   {
-    "language": "JavaScript",
-    "count": 57138,
-    "name": "gingin77.github.io",
-    "pushed_at": "2019-04-06T03:20:57Z",
-    "primary_language": "JavaScript",
-    "url_for_language_details": "https://api.github.com/repos/gingin77/gingin77.github.io/languages"
-  },
-  {
-    "language": "HTML",
-    "count": 35219,
-    "name": "gingin77.github.io",
-    "pushed_at": "2019-04-06T03:20:57Z",
-    "primary_language": "JavaScript",
-    "url_for_language_details": "https://api.github.com/repos/gingin77/gingin77.github.io/languages"
-  },
-  {
-    "language": "CSS",
-    "count": 12152,
-    "name": "gingin77.github.io",
-    "pushed_at": "2019-04-06T03:20:57Z",
-    "primary_language": "JavaScript",
-    "url_for_language_details": "https://api.github.com/repos/gingin77/gingin77.github.io/languages"
-  },
-  {
     "language": "Ruby",
     "count": 128167,
     "name": "hackernews_clone",
@@ -1574,5 +1550,29 @@
     "pushed_at": "2018-06-08T15:07:34Z",
     "primary_language": "JavaScript",
     "url_for_language_details": "https://api.github.com/repos/gingin77/vidly/languages"
+  },
+  {
+    "language": "JavaScript",
+    "count": 57548,
+    "name": "gingin77.github.io",
+    "pushed_at": "2019-10-18T23:24:22Z",
+    "primary_language": "JavaScript",
+    "url_for_language_details": "https://api.github.com/repos/gingin77/gingin77.github.io/languages"
+  },
+  {
+    "language": "HTML",
+    "count": 35219,
+    "name": "gingin77.github.io",
+    "pushed_at": "2019-10-18T23:24:22Z",
+    "primary_language": "JavaScript",
+    "url_for_language_details": "https://api.github.com/repos/gingin77/gingin77.github.io/languages"
+  },
+  {
+    "language": "CSS",
+    "count": 12152,
+    "name": "gingin77.github.io",
+    "pushed_at": "2019-10-18T23:24:22Z",
+    "primary_language": "JavaScript",
+    "url_for_language_details": "https://api.github.com/repos/gingin77/gingin77.github.io/languages"
   }
 ]
