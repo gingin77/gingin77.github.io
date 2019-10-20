@@ -23,8 +23,9 @@ let scatterPlotContent = new Vue({
                   <option name="selection0" value="all">*</option>
                   <option name="selection1" value="Ruby">Ruby</option>
                   <option name="selection2" value="JavaScript">JavaScript</option>
-                  <option name="selection3" value="HTML">HTML</option>
-                  <option name="selection4" value="CSS">CSS</option>
+                  <option name="selection3" value="PHP">PHP</option>
+                  <option name="selection4" value="HTML">HTML</option>
+                  <option name="selection5" value="CSS">CSS</option>
                 </select>
               </div>
             </div>
