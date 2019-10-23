@@ -118,7 +118,7 @@ export async function drawScatterPlot(dataToPlot = null) {
 
     let xScale = d3.scaleTime().domain([xMin, xMax]).range([margin.right, width - margin.left]),
       xValue   = (d) => { return xScale(stringToDate(d.pushed_at)) },
-      xAxis    = d3.axisBottom(xScale).ticks(d3.timeWeek.every(xTickFrequency)).tickFormat(d3.timeFormat('%b %e'))
+      xAxis    = d3.axisBottom(xScale).ticks(d3.timeWeek.every(xTickFrequency)).tickFormat(d3.timeFormat("%b '%y"))
 
     let yScale = d3.scaleLinear().domain([0, 150000]).range([height - 2, 0]),
       yValue   = (d) => { return yScale(d.count) },

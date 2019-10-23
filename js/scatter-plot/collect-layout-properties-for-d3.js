@@ -38,7 +38,7 @@ function getXTickFrequency(frameWidth) {
   } else if (frameWidth < 490) {
     return 8;
   } else {
-    return 4;
+    return 16;
   }
 }
 
